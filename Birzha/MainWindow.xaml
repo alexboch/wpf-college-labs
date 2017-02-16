@@ -7,17 +7,22 @@
         Title="MainWindow" Height="399.254" Width="768.283"
         >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="95*"/>
             <ColumnDefinition Width="173*"/>
             <ColumnDefinition Width="112*" />
         </Grid.ColumnDefinitions>
 
-        <ListBox SelectionChanged="currenciesListBox_SelectionChanged" Grid.Column="0" Name="currenciesListBox" HorizontalAlignment="Left" Height="269" Margin="10,10,0,0" VerticalAlignment="Top" Width="154"/>
-        <Calendar Name="calendar" Grid.Column="2" SelectedDatesChanged="Calendar_SelectedDateChanged" SelectionMode="SingleRange" HorizontalAlignment="Left" Margin="36,32,0,0" VerticalAlignment="Top" Height="164" Width="172"/>
-        <chartingToolkit:Chart Title="Динамика курса" Name="chart" Grid.Column="1" HorizontalAlignment="Left" Margin="10,32,0,0"  VerticalAlignment="Top" Height="273" Width="326">
+        <ListBox Grid.Row="1" SelectionChanged="currenciesListBox_SelectionChanged" Grid.Column="0" Name="currenciesListBox" HorizontalAlignment="Left" Height="269"  VerticalAlignment="Top" Width="154"/>
+        <Calendar Grid.Row="1" Name="calendar" Grid.Column="2" SelectedDatesChanged="Calendar_SelectedDateChanged" SelectionMode="SingleRange" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="164" Width="172"/>
+        <chartingToolkit:Chart Grid.Row="1" Title="Динамика курса" Name="chart" Grid.Column="1" HorizontalAlignment="Left"   VerticalAlignment="Top" Height="273" Width="326">
             <chartingToolkit:LineSeries Title="Курс"  IndependentValuePath="Date" DependentValuePath="Value" ItemsSource="{Binding Mode=OneWay}" HorizontalAlignment="Left" Height="163" VerticalAlignment="Top" Width="190"/>
         </chartingToolkit:Chart>
-
+        <Label x:Name="label" Content="Выберите валюту" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="18"/>
+        <Label x:Name="label2" Content="Выберите даты" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="18"/>
     </Grid>
 </Window>
